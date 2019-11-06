@@ -16,10 +16,11 @@ class WC_Shipping_Local_Pickup extends Handler
      */
     public function calculate(Payload $payload)
     {
-        // Additional cost for local pickup?
+        // Additional cost for local pickup?            
         $cost = is_numeric($this->shipping_method->cost) ? $this->shipping_method->cost : 0;
+        $days = $this->shipping_method->instance_settings['days'];
 
         $this->response->setPrice($cost);
-        $this->response->setDays(__('Contact us', 'woo-correios-calculo-de-frete-na-pagina-do-produto'));
+        $this->response->setDays($days);
     }
 }

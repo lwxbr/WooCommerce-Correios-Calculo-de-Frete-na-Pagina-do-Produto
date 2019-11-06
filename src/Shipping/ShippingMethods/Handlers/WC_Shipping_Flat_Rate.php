@@ -56,8 +56,9 @@ class WC_Shipping_Flat_Rate extends Handler
 
             // Uses "," for decimals because setPrice runs wc_correios_normalize_price() on it.
             $sum = str_replace('.', ',', $sum);
+            $days = $this->shipping_method->instance_settings['days'];
 
-            $this->response->setDays(__('Contact us', 'woo-correios-calculo-de-frete-na-pagina-do-produto'));
+            $this->response->setDays($days);
             $this->response->setPrice($sum);
         } else {
             throw HandlerException::unexpected_result_exception($sum);

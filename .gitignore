@@ -1,5 +1,6 @@
 # Configuration file for test suite
 .env
+.vscode
 
 # All vendor packages, except Composer autoloader
 /vendor/**
