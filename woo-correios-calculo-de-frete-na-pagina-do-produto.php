@@ -3,17 +3,17 @@
  * Plugin Name:          WooCommerce Correios - Cálculo de Frete na Página do Produto (CFPP)
  * Plugin URI:           https://github.com/Luc45/WooCommerce-Correios-Calculo-de-Frete-na-Pagina-do-Produto
  * Description:          Habilita o cálculo de frete na página do produto.
- * Version:              3.1.4
+ * Version:              3.1.8
  * Author:               Lucas Bustamante
  * Author URI:           https://www.lucasbustamante.com.br
  * Text Domain:          woo-correios-calculo-de-frete-na-pagina-do-produto
  * Domain Path:          /languages
  * License:              GPL 2.0
  * Requires at least:    4.4
- * Tested up to:         5.0
+ * Tested up to:         5.3.2
  * Requires PHP:         5.4
  * WC requires at least: 3.2
- * WC tested up to:      3.5
+ * WC tested up to:      3.9
  */
 
 namespace CFPP;
@@ -30,11 +30,6 @@ require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 define('CFPP_BASE_PATH', __DIR__);
 define('CFPP_BASE_URL', plugin_dir_url(__FILE__));
 
-/** i18n */
-add_action('plugins_loaded', function() {
-    load_plugin_textdomain('woo-correios-calculo-de-frete-na-pagina-do-produto', FALSE, basename(dirname(__FILE__)) . '/languages');
-});
-
 /** Register REST routes */
 add_action('rest_api_init', [new Rest, 'registerRoutes']);
 
@@ -44,6 +39,9 @@ add_action('rest_api_init', [new Rest, 'registerRoutes']);
  */
 add_action('plugins_loaded', function() {
     try {
+    	// i18n
+	    load_plugin_textdomain('woo-correios-calculo-de-frete-na-pagina-do-produto', FALSE, basename(dirname(__FILE__)) . '/languages');
+
         // Check requirements
         $requirements = new Requirements;
         $requirements->checkMinimumRequirements();
