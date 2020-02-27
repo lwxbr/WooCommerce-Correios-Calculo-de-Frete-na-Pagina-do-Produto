@@ -34,7 +34,7 @@ class Response
             $days = (int) $days;
             $this->days = sprintf(
                 /* translators: %d Estimated days for delivery */
-                esc_html(_n('Up to a day', 'Up to %d days', $days, 'woo-correios-calculo-de-frete-na-pagina-do-produto')),
+                esc_html(_n('Cerca de um dia útil', 'Cerca de %d dias úteis', $days, 'woo-correios-calculo-de-frete-na-pagina-do-produto')),
                 $days
             );
         } else {
